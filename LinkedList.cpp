@@ -57,6 +57,30 @@ void addNodeToTail(int data_) {
 	curr->next = new_node;
 
 }
+void addNodeIndex(int index, int data_) {
+
+	int counter = 1;
+	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+	newNode->data = data_;
+	newNode->next = NULL;
+	struct Node* curr = head;
+
+	while (curr != NULL)
+	{
+		if (index == 1) {
+			insertIntoList(data_);
+		}if (counter - index == -1) {
+
+			Node* temp = curr->next;
+			curr->next = newNode;
+			Node* nextNode = curr->next;
+			nextNode->next = temp;
+		}
+		counter++;
+		curr = curr->next;
+	}
+
+}
 
 
 int main() {
@@ -67,6 +91,8 @@ int main() {
 	printList();
 	addNodeToTail(7);
 	addNodeToTail(9);
+	printList();
+	addNodeIndex(2, 4);
 	printList();
 
 	return 0;
