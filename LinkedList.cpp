@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "stdio.h"
 #include <string.h>
 
@@ -9,6 +9,11 @@ struct Node {
 	struct Node* next;
 
 };
+struct Node* head;
 
+int main() {
+	
+	return 0;
 
+}
 
