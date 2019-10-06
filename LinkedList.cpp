@@ -44,6 +44,19 @@ void printList() {
 	printf("\n");
 
 }
+void addNodeToTail(int data_) {
+
+	struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+	new_node->data = data_;
+	new_node->next = NULL;
+	struct Node* curr = head;
+	while (curr->next != NULL) {
+
+		curr = curr->next;
+	}
+	curr->next = new_node;
+
+}
 
 
 int main() {
@@ -51,6 +64,9 @@ int main() {
 	insertIntoList(1);
 	insertIntoList(5);
 	insertIntoList(6);
+	printList();
+	addNodeToTail(7);
+	addNodeToTail(9);
 	printList();
 
 	return 0;
