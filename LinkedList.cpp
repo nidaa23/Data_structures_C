@@ -81,6 +81,31 @@ void addNodeIndex(int index, int data_) {
 	}
 
 }
+void deleteAt(int index) {
+	int counter = 1;
+	struct Node* curr = head;
+
+	while (curr != NULL)
+	{
+		if (index == 1) {
+
+			Node* temp = head;
+			head = head->next;
+			delete temp;
+			break;
+		}if (counter - index == -1) {
+
+			Node* toRemove = curr->next;
+			Node* temp = curr->next->next;
+			curr->next = temp;
+
+			delete toRemove;
+		}
+		counter++;
+		curr = curr->next;
+	}
+
+}
 
 
 int main() {
@@ -94,7 +119,10 @@ int main() {
 	printList();
 	addNodeIndex(2, 4);
 	printList();
-
+	deleteAt(1);
+	printList();
+	deleteAt(3);
+	printList();
 	return 0;
 
 }
