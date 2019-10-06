@@ -31,6 +31,19 @@ struct Node* insertIntoList(int data_) {
 	return head;
 }
 
+void printList() {
+
+	printf("The list: \n");
+	struct Node* curr = NULL;
+	curr = head;
+	while (curr != NULL)
+	{
+		printf("%d\t", curr->data);
+		curr = curr->next;
+	}
+	printf("\n");
+
+}
 
 
 int main() {
@@ -38,7 +51,7 @@ int main() {
 	insertIntoList(1);
 	insertIntoList(5);
 	insertIntoList(6);
-	printf("%d", head->data);
+	printList();
 
 	return 0;
 
