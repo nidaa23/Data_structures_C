@@ -11,7 +11,27 @@ struct Node {
 };
 struct Node* head;
 
+struct Node* insertFront(int toInsert, Node *&head_) {
 
+	if (head_ == NULL) {
+	
+
+		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+		temp->data = toInsert;
+		temp->next = head_;
+
+		head_ = temp;
+	}
+	else {
+		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+		
+		temp->data = toInsert;
+		temp->next = head_;
+
+		head_ = temp;
+	}
+	return head_;
+}
 struct Node* insertIntoList(int data_) {
 
 	if (head == NULL) {
@@ -108,6 +128,22 @@ void deleteAt(int index) {
 }
 
 
+void reverseList() {
+	struct Node* curr = head;
+	
+
+	      Node* temp_ = NULL;
+	       while (curr != NULL) {
+		
+			
+		     insertFront(curr->data, temp_);
+			 curr = curr->next;
+		    }
+	
+		   head = temp_;
+
+
+}
 int main() {
 	
 	insertIntoList(1);
@@ -122,6 +158,15 @@ int main() {
 	deleteAt(1);
 	printList();
 	deleteAt(3);
+	printList();
+	addNodeToTail(3);
+	addNodeToTail(4);
+	addNodeToTail(2);
+	printList();
+	printf("\n");
+	printf("%s", "reversed List:");
+	printf("\n");
+	reverseList();
 	printList();
 	return 0;
 
