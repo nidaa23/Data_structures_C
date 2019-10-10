@@ -14,7 +14,7 @@ struct Node* head;
 struct Node* insertFront(int toInsert, Node *&head_) {
 
 	if (head_ == NULL) {
-	
+
 
 		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
 		temp->data = toInsert;
@@ -24,7 +24,7 @@ struct Node* insertFront(int toInsert, Node *&head_) {
 	}
 	else {
 		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-		
+
 		temp->data = toInsert;
 		temp->next = head_;
 
@@ -32,7 +32,7 @@ struct Node* insertFront(int toInsert, Node *&head_) {
 	}
 	return head_;
 }
-struct Node* insertIntoList(int data_) {
+struct Node* InsertAtHead(int data_) {
 
 	if (head == NULL) {
 		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
@@ -51,7 +51,7 @@ struct Node* insertIntoList(int data_) {
 	return head;
 }
 
-void printList() {
+void Print() {
 
 	printf("The list: \n");
 	struct Node* curr = NULL;
@@ -64,7 +64,7 @@ void printList() {
 	printf("\n");
 
 }
-void addNodeToTail(int data_) {
+void Append(int data_) {
 
 	struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
 	new_node->data = data_;
@@ -77,7 +77,7 @@ void addNodeToTail(int data_) {
 	curr->next = new_node;
 
 }
-void addNodeIndex(int index, int data_) {
+void InsertAtPosition(int index, int data_) {
 
 	int counter = 1;
 	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
@@ -88,7 +88,7 @@ void addNodeIndex(int index, int data_) {
 	while (curr != NULL)
 	{
 		if (index == 1) {
-			insertIntoList(data_);
+			InsertAtHead(data_);
 		}if (counter - index == -1) {
 
 			Node* temp = curr->next;
@@ -101,7 +101,7 @@ void addNodeIndex(int index, int data_) {
 	}
 
 }
-void deleteAt(int index) {
+void DeletePosition(int index) {
 	int counter = 1;
 	struct Node* curr = head;
 
@@ -128,47 +128,47 @@ void deleteAt(int index) {
 }
 
 
-void reverseList() {
+void Reverse() {
 	struct Node* curr = head;
-	
 
-	      Node* temp_ = NULL;
-	       while (curr != NULL) {
-		
-			
-		     insertFront(curr->data, temp_);
-			 curr = curr->next;
-		    }
-	
-		   head = temp_;
+
+	Node* temp_ = NULL;
+	while (curr != NULL) {
+
+
+		insertFront(curr->data, temp_);
+		curr = curr->next;
+	}
+
+	head = temp_;
 
 
 }
 int main() {
-	
-	insertIntoList(1);
-	insertIntoList(5);
-	insertIntoList(6);
-	printList();
-	addNodeToTail(7);
-	addNodeToTail(9);
-	printList();
-	addNodeIndex(2, 4);
-	printList();
-	deleteAt(1);
-	printList();
-	deleteAt(3);
-	printList();
-	addNodeToTail(3);
-	addNodeToTail(4);
-	addNodeToTail(2);
-	printList();
+
+	InsertAtHead(1);
+	InsertAtHead(5);
+	InsertAtHead(6);
+	Print();
+	Append(7);
+	Append(9);
+	Print();
+	InsertAtPosition(2, 4);
+	Print();
+	DeletePosition(1);
+	Print();
+	DeletePosition(3);
+	Print();
+	Append(3);
+	Append(4);
+	Append(2);
+	Print();
 	printf("\n");
 	printf("%s", "reversed List:");
 	printf("\n");
-	reverseList();
-	printList();
+	Reverse();
+	Print();
+	getchar();
 	return 0;
 
 }
-
