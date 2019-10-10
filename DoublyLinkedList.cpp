@@ -122,6 +122,37 @@ void InsertAtPosition(int x, int position) {
 	}
 
 }
+
+
+
+void DeleteAtPosition(int position){
+
+	int counter = 1;
+	struct Node* curr = head;
+
+	while (curr != NULL)
+	{
+		if (position == 1) {
+
+			Node* temp = head;
+			head->next->prev = NULL;
+			head = head->next;
+			delete temp;
+			break;
+		}if (counter - position == -1) {
+
+			Node* toRemove = curr->next;
+			Node* temp = curr->next->next;
+			curr->next->next->prev = curr;
+			curr->next = temp;
+
+			delete toRemove;
+		}
+		counter++;
+		curr = curr->next;
+	}
+
+}
 int main() {
 
 	bool isEmp = isEmpty();
@@ -143,6 +174,8 @@ int main() {
 	int list_len = length();
 	printf("Length of list: %d \n", list_len);
 	InsertAtPosition(13, 3);
+	Print();
+	DeleteAtPosition(3);
 	Print();
 	getchar();
 	return 0;
