@@ -98,6 +98,30 @@ int length(){
 	return len;
 }
 
+void InsertAtPosition(int x, int position) {
+
+	int counter = 1;
+	struct Node* newNode = CreateNewNode(x);
+	struct Node* curr = head;
+
+	while (curr != NULL)
+	{
+		if (position == 1) {
+			InsertAtHead(x);
+		}if (counter - position == -1) {
+
+			Node* temp = curr->next;
+			curr->next = newNode;
+			curr->next->prev = curr;
+			Node* nextNode = curr->next;
+			nextNode->next = temp;
+			newNode->prev = curr->next;
+		}
+		counter++;
+		curr = curr->next;
+	}
+
+}
 int main() {
 
 	bool isEmp = isEmpty();
@@ -118,6 +142,8 @@ int main() {
 	printf("Empty list? %s\n",isEmp_ ? "true" : "false");
 	int list_len = length();
 	printf("Length of list: %d \n", list_len);
+	InsertAtPosition(13, 3);
+	Print();
 	getchar();
 	return 0;
 }
