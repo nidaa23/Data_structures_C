@@ -116,7 +116,8 @@ int main() {
 	Print();
 	bool isEmp_ = isEmpty();
 	printf("Empty list? %s\n",isEmp_ ? "true" : "false");
-	
+	int list_len = length();
+	printf("Length of list: %d \n", list_len);
 	getchar();
 	return 0;
 }
