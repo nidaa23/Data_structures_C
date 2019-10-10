@@ -1,6 +1,9 @@
 #include <iostream>
 #include "stdio.h"
 #include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
 
 
 struct Node {
@@ -73,12 +76,32 @@ void Print() {
 
 }
 
+bool isEmpty() {
 
+	bool emptyList = true;
+	if (head != NULL) {
+		emptyList = false;
+	}
+	return emptyList;
+}
 
+int length(){
+	int len = 0;
+	struct Node* curr = NULL;
+	curr = head;
+	while (curr != NULL)
+	{
+		len++;
+		curr = curr->next;
+	}
 
+	return len;
+}
 
 int main() {
 
+	bool isEmp = isEmpty();
+	printf("Empty list? %s\n", isEmp ? "true" : "false");
 	InsertAtHead(0);
 	InsertAtHead(5);
 	InsertAtHead(10);
@@ -91,6 +114,9 @@ int main() {
 	Append(40);
 	Append(45);
 	Print();
+	bool isEmp_ = isEmpty();
+	printf("Empty list? %s\n",isEmp_ ? "true" : "false");
+	
 	getchar();
 	return 0;
 }
