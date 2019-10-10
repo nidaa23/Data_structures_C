@@ -12,23 +12,26 @@ struct Node {
 };
 struct Node* head;
 
+struct  Node* CreateNewNode(int x) {
+
+	struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+	new_node->data = x;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return new_node;
+}
 
 void InsertAtHead(int x) {
 
 	if (head == NULL) {
-		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-		temp->data = x;
-		temp->next = NULL;
-		temp->prev = NULL;
-
+		struct Node* temp = CreateNewNode(x);
+		temp->next = head;
 		head = temp;
 	}
 	else
 	{
-		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-		temp->data = x;
+		struct Node* temp = CreateNewNode(x);
 		temp->next = head;
-		temp->prev = NULL;
 		head->prev = temp;
 		head = temp;
 	}
@@ -39,18 +42,13 @@ void Append(int x) {
 
 
 	if (head == NULL) {
-		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-		temp->data = x;
-		temp->next = NULL;
-		temp->prev = NULL;
-
+		struct Node* temp = CreateNewNode(x);
+		temp->next = head;
 		head = temp;
 	}
 	else {
-		struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
-		new_node->data =x;
-		new_node->next = NULL;
-		new_node->prev = NULL;
+		struct Node* new_node = CreateNewNode(x);
+	
 		struct Node* curr = head;
 		while (curr->next != NULL) {
 			curr = curr->next;
@@ -74,6 +72,9 @@ void Print() {
 	printf("\n");
 
 }
+
+
+
 
 
 int main() {
