@@ -153,21 +153,47 @@ void DeleteAtPosition(int position){
 	}
 
 }
-int main() {
+
+
+
+void swapNodes(Node *a, Node *b) {
+
+	int temp_data = a->data;
+	a->data = b->data;
+	b->data = temp_data;
+}
+int sortNodes(int flag) {
+	struct Node* curr = head;
+	while (curr->next != NULL) {
+		if (curr->data > curr->next->data) {
+			swapNodes(curr, curr->next);
+			flag=flag+1;
+		}
+		curr = curr->next;
+	}
+	return flag;
+}
+void Sort_List() {
+	int flag = 1;
+	while (flag != 0) {
+		flag=sortNodes(0);
+	}
+}
+
+int main(){
 
 	bool isEmp = isEmpty();
 	printf("Empty list? %s\n", isEmp ? "true" : "false");
-	InsertAtHead(0);
-	InsertAtHead(5);
 	InsertAtHead(10);
-	InsertAtHead(15);
 	InsertAtHead(20);
-	InsertAtHead(25);
 	InsertAtHead(30);
+	InsertAtHead(40);
+	InsertAtHead(50);
+	InsertAtHead(60);
+	InsertAtHead(70);
 	Print();
-	Append(35);
-	Append(40);
-	Append(45);
+	Append(5);
+	Append(0);
 	Print();
 	bool isEmp_ = isEmpty();
 	printf("Empty list? %s\n",isEmp_ ? "true" : "false");
@@ -176,6 +202,9 @@ int main() {
 	InsertAtPosition(13, 3);
 	Print();
 	DeleteAtPosition(3);
+	Print();
+	printf("%s", ".....");
+	Sort_List();
 	Print();
 	getchar();
 	return 0;
