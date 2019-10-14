@@ -35,23 +35,33 @@ void Append(int x) {
 		temp->prev = head;
 		head = temp;
 		tail = temp;
+		
 	}
 	else {
 		struct Node* new_node = CreateNewNode(x);
 
 		new_node->prev = tail;
 		new_node->next = head;
+		head->prev = new_node;
+		tail->next = new_node;
 		tail = new_node;
-
+	
 
 	}
+	length++;
 }
+
+
+
+
 int main(){
 
-	Append(10);
+	Append(7);
 	Append(5);
 	Append(6);
-	
+	Append(3);
+	Append(4);
+	printf("%d", length);
 
 	return 0;
 }
