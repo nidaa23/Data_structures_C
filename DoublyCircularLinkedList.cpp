@@ -51,6 +51,23 @@ void Append(int x) {
 	length++;
 }
 
+void Print() {
+	printf("The list: \n");
+	struct Node* curr = NULL;
+	curr = head;
+	while (curr != NULL)
+	{
+		printf("%d\t", curr->data);
+		curr = curr->next;
+
+		if (curr == tail) {
+			printf("%d\t", curr->data);
+			break;
+		}
+	}
+	printf("\n");
+
+}
 
 
 
@@ -61,7 +78,8 @@ int main(){
 	Append(6);
 	Append(3);
 	Append(4);
-	printf("%d", length);
-
+	printf("Length of list: %d", length);
+	printf("\n\n");
+	Print();
 	return 0;
 }
