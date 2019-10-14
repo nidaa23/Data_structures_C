@@ -18,7 +18,7 @@ struct Node *tail;
 int length = 0;
 
 
-struct Node* CreatenewNode(int x) {
+struct Node* CreateNewNode(int x) {
 		struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
 		new_node->data = x;
 		new_node->next = NULL;
@@ -28,9 +28,30 @@ struct Node* CreatenewNode(int x) {
 
 }
 
-int main() {
+void Append(int x) {
+	if (head == NULL) {
+		struct Node* temp = CreateNewNode(x);
+		temp->next = head;
+		temp->prev = head;
+		head = temp;
+		tail = temp;
+	}
+	else {
+		struct Node* new_node = CreateNewNode(x);
+
+		new_node->prev = tail;
+		new_node->next = head;
+		tail = new_node;
 
 
+	}
+}
+int main(){
+
+	Append(10);
+	Append(5);
+	Append(6);
+	
 
 	return 0;
 }
