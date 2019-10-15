@@ -68,30 +68,54 @@ void Print() {
 	printf("\n");
 
 }
-void Search(int x) {
+struct Node* Search(int x) {
 
 
 	if (head->data == x) {
-		printf("Index: %d", 1);
+		return head;
 	}if (tail->data == x) {
-		printf("Index: %d", length);
+		return tail;
 	}
 	else {
-		int counter = 1;
+		
 		struct Node* curr = head;
 		while (curr != tail) {
 		
 			if (curr->data == x) {
-				printf("Index: %d", counter);
+				return curr;
 				break;
 			}if (curr->next == tail) {
-				printf("%s", "Doesn't exist");
+				return NULL;
 			}
-			counter++;
+			
 			curr = curr->next;
 		}
 
 	}
+}
+
+void Update(int oldValue, int newValue) {
+	struct Node* temp = Search(oldValue);
+	if (temp != NULL) {
+		if (temp == tail) {
+			tail->data = newValue;
+		}
+		else {
+			struct Node* curr = head;
+			while (curr != tail) {
+
+				if (curr == temp) {
+					curr->data = newValue;
+				}
+				curr = curr->next;
+			}
+
+		}
+	}
+	else {
+		printf("%s", "Value doesn't exist");
+	}
+	
 }
 
 
@@ -106,7 +130,11 @@ int main(){
 	printf("\n\n");
 	Print();
 	printf("\n\n");
-	Search(4);
-	
+	printf("%d",Search(4)->data);
+	printf("\n\n");
+	Update(1,9);
+	printf("\n\n");
+	Print();
+
 	return 0;
 }
