@@ -107,6 +107,6 @@ int main(){
 	Print();
 	printf("\n\n");
 	Search(4);
-	getchar();
+	
 	return 0;
 }
