@@ -68,7 +68,31 @@ void Print() {
 	printf("\n");
 
 }
+void Search(int x) {
 
+
+	if (head->data == x) {
+		printf("Index: %d", 1);
+	}if (tail->data == x) {
+		printf("Index: %d", length);
+	}
+	else {
+		int counter = 1;
+		struct Node* curr = head;
+		while (curr != tail) {
+		
+			if (curr->data == x) {
+				printf("Index: %d", counter);
+				break;
+			}if (curr->next == tail) {
+				printf("%s", "Doesn't exist");
+			}
+			counter++;
+			curr = curr->next;
+		}
+
+	}
+}
 
 
 int main(){
@@ -81,5 +105,8 @@ int main(){
 	printf("Length of list: %d", length);
 	printf("\n\n");
 	Print();
+	printf("\n\n");
+	Search(4);
+	getchar();
 	return 0;
 }
